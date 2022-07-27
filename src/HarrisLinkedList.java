@@ -22,6 +22,10 @@ public class HarrisLinkedList<E> {
         //Phase 2
         var pred_next = pred.getNext().getReference();
         if(pred_next != curr){ //Try to remove marked nodes
+            if(!pred_next.isTail()){
+                pred_next.getNext().get(marked);
+                if(!marked[0]) return find(value);
+            }
             if(!pred.getNext().compareAndSet(pred_next, curr, false, false))
                 return find(value); //if CAS fail we call find again
         }
