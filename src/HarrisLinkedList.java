@@ -27,11 +27,11 @@ public class HarrisLinkedList<E> {
                 if(!marked[0]) return find(value);
             }
             if(!pred.getNext().compareAndSet(pred_next, curr, false, false))
-                return find(value); //if CAS fail we call find again
+                return find(value); //if CAS fails we call find again
         }
 
         //Phase 3
-        return new Window<>(pred, curr); //Marked nodes removed, pred is the curr's predecessor
+        return new Window<>(pred, curr); //Pred and Curr are adjacent
     }
 
     /*public Window find2(int key) {
